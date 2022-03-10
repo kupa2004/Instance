@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
   # Configuration options
-  credentials = file("cred-kupa2004.json")
+  #credentials = file("cred-kupa2004.json")
   project = "solar-semiotics-343520"
   region  = "us-west1"
   zone    = "us-west1-b"
@@ -30,10 +30,6 @@ resource "google_compute_instance" "default" {
     }
   }
 
-  tags = [
-      "http-server"
-    ]
-
   network_interface {
     network = "default"
     access_config {
@@ -41,8 +37,8 @@ resource "google_compute_instance" "default" {
     }
   }
   
-  metadata ={
-  sshKeys = credentials = file("opkey.pub")
+  #metadata ={
+  #sshKeys = file("opkey.pub")
   # "startup-script" = <<EOT
   #!/bin/bash
   #EOT
