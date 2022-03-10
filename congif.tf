@@ -24,7 +24,7 @@ output "gcp_instance_ip" {
 resource "google_compute_instance" "default" {
   name         = "my-test14"
   #This CPU: custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB
-  machine_type = "custom-2-4048"
+  machine_type = "custom-${{ CPU }}-${{ MEMORY }}"
   zone         = "us-west1-b"
 
   boot_disk {
@@ -35,7 +35,7 @@ resource "google_compute_instance" "default" {
     #size - The size of the image in gigabytes.
     #type - The GCE disk type. One of pd-standard or pd-ssd.
     #image - The image from which this disk was initialised.
-      size = "16"
+      size = ${{ SIZE }}
       image = "debian-cloud/debian-9"
     }
   }
