@@ -36,7 +36,7 @@ resource "google_compute_instance" "default" {
     #type - The GCE disk type. One of pd-standard or pd-ssd.
     #image - The image from which this disk was initialised.
       size = var.SIZE
-      image = "debian-cloud/debian-9"
+      image = "ubuntu-2004-focal-v20220303a"
     }
   }
 
