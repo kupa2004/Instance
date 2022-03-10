@@ -42,6 +42,6 @@ resource "google_compute_instance" "default" {
   # "startup-script" = <<EOT
   #!/bin/bash
   #EOT
-  }
+  #}
 }  
   
