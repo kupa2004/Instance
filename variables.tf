@@ -1,10 +1,6 @@
 variable "CPU" {
   description = "Enter CPU"
-  default     = 1
-}
-variable "MEM" {
-  description = "Enter memory size"
-  default     = 1
+  default     = "custom-1-1024"
 }
 
 variable "SIZE" {
