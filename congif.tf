@@ -24,7 +24,7 @@ output "gcp_instance_ip" {
 resource "google_compute_instance" "default" {
   name         = "my-test14"
   #This CPU: custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB
-  machine_type = "custom-var.CPU-var.MEM"
+  machine_type = "custom-"var.CPU"-"var.MEM
   zone         = "us-west1-b"
 
   boot_disk {
