@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
   # Configuration options
-  #credentials = file("cred-kupa.json")
+  credentials = file("cred-kupa.json")
   project = "weighty-casing-338809"
   region  = "us-west1"
   zone    = "us-west1-b"
