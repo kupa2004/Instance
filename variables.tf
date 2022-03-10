@@ -5,5 +5,5 @@ variable "CPU" {
 
 variable "SIZE" {
   description = "Enter boot-disk size"
-  default     = "2"
+  default     = "10"
 }
