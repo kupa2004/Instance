@@ -35,7 +35,7 @@ resource "google_compute_instance" "default" {
     #size - The size of the image in gigabytes.
     #type - The GCE disk type. One of pd-standard or pd-ssd.
     #image - The image from which this disk was initialised.
-      size = ${{ SIZE }}
+      size = "${{ SIZE }}"
       image = "debian-cloud/debian-9"
     }
   }
