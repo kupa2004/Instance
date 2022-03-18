@@ -24,7 +24,7 @@ output "gcp_instance_ip" {
 resource "google_compute_instance" "default" {
   name         = "my-test14"
   #This CPU: custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB
-  machine_type = var.CPU
+  machine_type = "custom-2-2048"
   zone         = "us-west1-b"
 
   boot_disk {
@@ -35,7 +35,7 @@ resource "google_compute_instance" "default" {
     #size - The size of the image in gigabytes.
     #type - The GCE disk type. One of pd-standard or pd-ssd.
     #image - The image from which this disk was initialised.
-      size = var.SIZE
+      size = 10
       image = "ubuntu-2004-focal-v20220303a"
     }
   }
