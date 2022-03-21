@@ -53,11 +53,14 @@ resource "google_compute_instance" "default" {
   metadata = {
       "startup-script" = <<EOT
   #!/bin/bash
+  echo "Sleeping for 5 seconds…"
+  sleep 90
+  echo "Completed"
   apt-get update
   apt-get install python-yaml python-jinja2  python3-paramiko python-crypto -y
   ansible-playbook ansible/build.yml  
   
-   EOT
+  EOT
   }
 }  
 
