@@ -1,5 +1,4 @@
 ---
----
 - name: package boxfuse
   hosts: localhost
   remote_user: root
