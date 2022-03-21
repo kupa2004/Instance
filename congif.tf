@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
   # Configuration options
-  credentials = file("cred.json")
+  credentials = file("/home/cred-kupa.json")
   project = "solar-semiotics-343520"
   region  = "us-west1"
   zone    = "us-west1-b"
@@ -40,10 +40,20 @@ resource "google_compute_instance" "default" {
       // Ephemeral IP
     }
   }
+  provisioner "remote-exec" {
+    inline = ["sudo dnf -y install python"]
+
+    connection {
+      type        = "ssh"
+      user        = "root"
+      private_key = file("/root/.ssh/id_rsa")
+    }
+  }
+  
   metadata = {
       "startup-script" = <<EOT
   #!/bin/bash
-  echo "Sleeping for 5 seconds…"
+  echo "Sleeping for 90 seconds…"
   sleep 90
   echo "Completed"
   apt-get update
