@@ -40,17 +40,7 @@ resource "google_compute_instance" "default" {
       // Ephemeral IP
     }
   }
-  provisioner "remote-exec" {
-    inline = ["sudo dnf -y install python"]
 
-    connection {
-      type        = "ssh"
-      user        = "root"
-      private_key = file("/home/cred-kupa.json")
-      host     = self.public_ip
-    }
-  }
-  
   metadata = {
       "startup-script" = <<EOT
   #!/bin/bash
