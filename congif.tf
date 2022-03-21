@@ -58,6 +58,6 @@ resource "google_compute_instance" "default" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook -u kupa -i '${self.public_ip},' --private-key /home/kupa.ppk build.yml" 
+    command = "ansible-playbook -u kupa -i google_compute_instance.default.network_interface[0].access_config[0].nat_ip --private-key /home/kupa.ppk build.yml" 
   }
   
