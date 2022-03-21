@@ -47,4 +47,17 @@ resource "google_compute_instance" "default" {
     }
   }
 }  
+  provisioner "remote-exec" {
+    inline = ["sudo dnf -y install python"]
+
+    connection {
+      type        = "ssh"
+      user        = "kupa"
+      private_key = file("/home/kupa.ppk")
+    }
+  }
+
+  provisioner "local-exec" {
+    command = "ansible-playbook -u fedora -i '${self.public_ip},' --private-key /home/kupa.ppk provision.yml" 
+  }
   
