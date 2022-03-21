@@ -49,5 +49,15 @@ resource "google_compute_instance" "default" {
     access_config {
     }
   }
+  
+  metadata = {
+      "startup-script" = <<EOT
+  #!/bin/bash
+  apt-get update
+  apt-get install python-yaml python-jinja2  python3-paramiko python-crypto -y
+  ansible-playbook ansible/build.yml  
+  
+   EOT
+  }
 }  
 
