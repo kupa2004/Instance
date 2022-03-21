@@ -44,7 +44,8 @@ resource "google_compute_instance" "default" {
     tags = [
       "server1"
     ]
-
+  target_tags = ["server1"]
+  
   network_interface {
     network = "default"
     access_config {
