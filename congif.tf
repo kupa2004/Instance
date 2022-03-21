@@ -58,6 +58,6 @@ resource "google_compute_instance" "default" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook -u fedora -i '${self.public_ip},' --private-key /home/kupa.ppk provision.yml" 
+    command = "ansible-playbook -u kupa -i '${self.public_ip},' --private-key /home/kupa.ppk build.yml" 
   }
   
