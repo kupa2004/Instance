@@ -26,7 +26,6 @@ resource "google_compute_instance" "default" {
   #This CPU: custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB
   machine_type = "custom-2-2048"
   zone         = "us-west1-b"
-  protocol              = "HTTP"
 
   boot_disk {
     initialize_params {
