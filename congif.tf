@@ -46,7 +46,7 @@ resource "google_compute_instance" "default" {
     connection {
       type        = "ssh"
       user        = "root"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = file("/home/cred-kupa.json")
     }
   }
   
