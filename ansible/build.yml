@@ -1,7 +1,7 @@
 ---
 ---
 - name: package boxfuse
-  hosts: "{{ new_instances }}"
+  hosts: all
   remote_user: root
   become_user: root
   become: true
