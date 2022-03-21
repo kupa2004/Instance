@@ -40,6 +40,10 @@ resource "google_compute_instance" "default" {
       image = "ubuntu-2004-focal-v20220303a"
     }
   }
+  
+    tags = [
+      "server1"
+    ]
 
   network_interface {
     network = "default"
