@@ -47,6 +47,7 @@ resource "google_compute_instance" "default" {
       type        = "ssh"
       user        = "root"
       private_key = file("/home/cred-kupa.json")
+      host     = self.public_ip
     }
   }
   
