@@ -9,8 +9,8 @@ terraform {
 
 provider "google" {
   # Configuration options
-  credentials = file("/home/cred-kupa.json")
-  project = "weighty-casing-338809"
+  credentials = file("cred.json")
+  project = "solar-semiotics-343520"
   region  = "us-west1"
   zone    = "us-west1-b"
 }
@@ -19,37 +19,27 @@ output "gcp_instance_ip" {
   value = google_compute_instance.default.network_interface[0].access_config[0].nat_ip
 }
 
-
-
 resource "google_compute_instance" "default" {
   name         = "my-test14"
-  #This CPU: custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB
-  machine_type = "custom-2-2048"
+  machine_type = "f1-micro"
   zone         = "us-west1-b"
 
   boot_disk {
     initialize_params {
-    #For quick access to options
-    # https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_instance#nested_boot_disk
-
-    #size - The size of the image in gigabytes.
-    #type - The GCE disk type. One of pd-standard or pd-ssd.
-    #image - The image from which this disk was initialised.
-      size = 10
       image = "ubuntu-2004-focal-v20220303a"
     }
   }
-  
-    tags = [
-      "server1"
+
+  tags = [
+      "http-server"
     ]
-  
+
   network_interface {
     network = "default"
     access_config {
+      // Ephemeral IP
     }
   }
-  
   metadata = {
       "startup-script" = <<EOT
   #!/bin/bash
@@ -58,7 +48,7 @@ resource "google_compute_instance" "default" {
   echo "Completed"
   apt-get update
   apt-get install python-yaml python-jinja2  python3-paramiko python-crypto -y
-  ansible-playbook ansible/build.yml  
+  ansible-playbook -i build.yml  
   
   EOT
   }
