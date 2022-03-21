@@ -1,0 +1,46 @@
+---
+---
+- name: package boxfuse
+  hosts: "{{ new_instances }}"
+  remote_user: root
+  become_user: root
+  become: true
+
+  tasks:
+    - name: Update system
+      apt: update_cache=yes
+
+    - name: Install modules
+      apt:
+        name: default-jdk
+        state: present
+
+    - name: Create directory
+      file:
+        path: /home/boxfuse-sample-java-war-hello
+        state: directory
+
+    - name: Clone boxfuse
+      git:
+        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+        dest: /home/boxfuse-sample-java-war-hello/
+
+    - name: install maven
+      become: yes
+      apt:
+        pkg: maven
+        state: latest
+        update_cache: yes
+        cache_valid_time: 3600
+      with_items:
+        - maven
+
+    - name: Build boxfuse
+      command: 'mvn package'
+      args:
+        chdir: /home/boxfuse-sample-java-war-hello/
+
+    - name: Copy war in jenkins workspace
+      copy:
+        src: /home/boxfuse-sample-java-war-hello/target/hello-1.0.war
+        dest: /var/lib/jenkins/workspace/Cert/hello-1.0.war
