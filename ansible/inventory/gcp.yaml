@@ -1,0 +1,6 @@
+---
+plugin: gcp_compute
+projects:
+  - <weighty-casing-338809
+auth_kind: serviceaccount
+service_account_file: /home/cred-kupa.json
